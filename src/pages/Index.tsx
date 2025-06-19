@@ -1,11 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import AnimatedSphere from '@/components/AnimatedSphere';
+import PersonalInfoForm from '@/components/PersonalInfoForm';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen flex">
+      {/* Left Half - Animated Sphere */}
+      <div className="w-1/2 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+        <div className="absolute inset-0">
+          <AnimatedSphere />
+        </div>
+        {/* Decorative elements */}
+        <div className="absolute top-10 left-10 w-20 h-20 bg-lime-500/20 rounded-full blur-xl"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-lime-400/10 rounded-full blur-2xl"></div>
+      </div>
+
+      {/* Right Half - Personal Information Form */}
+      <div className="w-1/2 bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-8">
+        <div className="w-full max-w-lg">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Welcome</h1>
+            <p className="text-lg text-gray-600">Let's get to know you better</p>
+          </div>
+          <PersonalInfoForm />
+        </div>
       </div>
     </div>
   );

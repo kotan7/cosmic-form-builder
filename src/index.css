@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,4 +101,84 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* 3D Sphere Animation Styles */
+.sphere-container {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  perspective: 400px;
+}
+
+.sphere {
+  grid-area: 1/1;
+  display: grid;
+  place-content: center; 
+  transform-style: preserve-3d;
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.ring {
+  --d: min(45vh, 45vw);
+  --r: calc(var(--d) / 2);
+  --thickness: 8px;
+  --color_1: #32CD32;
+  --color_2: transparent;
+  --degOffset: 0.5deg;
+
+  grid-area: 1/1;
+  height: var(--d);
+  width: var(--d);
+  border-radius: 50%;
+
+  background:
+    repeating-conic-gradient( 
+      var(--color_1) 0deg 5deg,
+      var(--color_2) calc(5deg + var(--degOffset)) 15deg,
+      var(--color_1) calc(15deg + var(--degOffset)) 30deg,
+      var(--color_2) calc(30deg + var(--degOffset)) 45deg,
+      var(--color_1) calc(45deg + var(--degOffset)) 75deg,
+      var(--color_2) calc(75deg + var(--degOffset)) 105deg,
+      var(--color_1) calc(105deg + var(--degOffset)) 135deg,
+      var(--color_2) calc(135deg + var(--degOffset)) 150deg,
+      var(--color_1) calc(150deg + var(--degOffset)) 165deg,
+      var(--color_2) calc(165deg + var(--degOffset)) 175deg,
+      var(--color_1) calc(175deg + var(--degOffset)) 180deg);
+
+  mask: radial-gradient(circle,
+    black 0% calc(var(--r) - var(--thickness) - 1px),
+    white calc(var(--r) - var(--thickness) + 1px) calc(var(--r) - 10px));
+  mask-mode: luminance;
+  mask-composite: subtract;
+  transform-origin: center;
+  transform: rotateY(var(--angle));
+}
+
+.ring:nth-child(1) {
+  --angle: 0deg;
+}
+.ring:nth-child(2) {
+  --angle: 30deg;
+}
+.ring:nth-child(3) {
+  --angle: 60deg;
+}
+.ring:nth-child(4) {
+  --angle: 90deg;
+}
+.ring:nth-child(5) {
+  --angle: 120deg;
+}
+.ring:nth-child(6) {
+  --angle: 150deg;
 }

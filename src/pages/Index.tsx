@@ -1,7 +1,7 @@
 
 import React from 'react';
 import AnimatedSphere from '@/components/AnimatedSphere';
-import PersonalInfoForm from '@/components/PersonalInfoForm';
+import LoginSignupForm from '@/components/LoginSignupForm';
 
 const Index = () => {
   return (
@@ -16,14 +16,14 @@ const Index = () => {
         <div className="absolute bottom-20 right-10 w-32 h-32 bg-lime-400/10 rounded-full blur-2xl"></div>
       </div>
 
-      {/* Right Half - Personal Information Form */}
+      {/* Right Half - Login/Signup Form */}
       <div className="w-1/2 bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-8">
         <div className="w-full max-w-lg">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-800 mb-2">Welcome</h1>
-            <p className="text-lg text-gray-600">Let's get to know you better</p>
+            <p className="text-lg text-gray-600">Access your account or create a new one</p>
           </div>
-          <PersonalInfoForm />
+          <LoginSignupForm />
         </div>
       </div>
     </div>
